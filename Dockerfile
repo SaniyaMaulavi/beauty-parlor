@@ -8,6 +8,8 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=build /app .
+COPY Views ./Views
+COPY wwwroot ./wwwroot
 EXPOSE 80
 ENV ASPNETCORE_URLS=http://+:80
 ENTRYPOINT ["dotnet", "BeautyParlour.dll"]
